@@ -1,11 +1,11 @@
 {
-	"name": "package-name",
-	"version": "0.0.0",
-	"description": "TODO:",
+	"name": "astro-fouc-killer",
+	"version": "0.0.1",
+	"description": "Eliminate Dark Mode FOUC (Flash Of Unstyled Content) in Astro. Works with class based dark modes set in local storage and supports system preference.",
 	"author": {
-		"email": "TODO:",
-		"name": "TODO:",
-		"url": "TODO:"
+		"email": "bassim@shahidy.com",
+		"name": "Bassim Shahidy",
+		"url": "https://bassimshahidy.com"
 	},
 	"license": "MIT",
 	"keywords": [
@@ -15,7 +15,7 @@
 		"astro",
 		"TODO:"
 	],
-	"homepage": "TODO:",
+	"homepage": "https://github.com/avgvstvs96/astro-fouc-killer",
 	"publishConfig": {
 		"access": "public"
 	},

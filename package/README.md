@@ -1,27 +1,44 @@
-# `package-name`
+# `astro-fouc-killer`
 
 This is an [Astro integration](https://docs.astro.build/en/guides/integrations-guide/) that TODO:description
 
 ## Usage
 
 ### Prerequisites
+>[!IMPORTANT]
+Only works with class based dark mode. 
 
-TODO:
+This integration sets the dark mode class on the root element of the page based on the local storage value or system preference, if no value is set in local storage.
+
+The default value for the local storage key is `themeToggle`, pass a different key to the integration options to change this, for example:
+
+```ts
+import { defineConfig } from 'astro/config';
+import astroFoucKiller from 'astro-fouc-killer';
+
+export default defineConfig({
+  integrations: [
+    astroFoucKiller({
+      localStorageKey: 'dark-mode',
+    }),
+  ],
+}); 
+```
 
 ### Installation
 
 Install the integration **automatically** using the Astro CLI:
 
 ```bash
-pnpm astro add package-name
+pnpm astro add astro-fouc-killer
 ```
 
 ```bash
-npx astro add package-name
+npx astro add astro-fouc-killer
 ```
 
 ```bash
-yarn astro add package-name
+yarn astro add astro-fouc-killer
 ```
 
 Or install it **manually**:
@@ -29,21 +46,21 @@ Or install it **manually**:
 1. Install the required dependencies
 
 ```bash
-pnpm add package-name
+pnpm add astro-fouc-killer
 ```
 
 ```bash
-npm install package-name
+npm install astro-fouc-killer
 ```
 
 ```bash
-yarn add package-name
+yarn add astro-fouc-killer
 ```
 
 2. Add the integration to your astro config
 
 ```diff
-+import integration from "package-name";
++import integration from "astro-fouc-killer";
 
 export default defineConfig({
   integrations: [

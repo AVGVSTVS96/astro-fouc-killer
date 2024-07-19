@@ -1,3 +1,4 @@
-import { integration } from "./integration.js";
+// import { astroFoucKiller } from "./integration.js";
+// export default astroFoucKiller;
 
-export default integration;
+export { astroFoucKiller as default } from "./integration.js";
