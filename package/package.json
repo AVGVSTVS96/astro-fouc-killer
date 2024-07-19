@@ -7,13 +7,12 @@
 		"name": "Bassim Shahidy",
 		"url": "https://bassimshahidy.com"
 	},
-	"license": "MIT",
+	"license": "AGPL-3.0-only",
 	"keywords": [
 		"astro-integration",
 		"astro-component",
 		"withastro",
-		"astro",
-		"TODO:"
+		"astro"
 	],
 	"homepage": "https://github.com/avgvstvs96/astro-fouc-killer",
 	"publishConfig": {
