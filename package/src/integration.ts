@@ -3,9 +3,11 @@ import { z } from "astro/zod";
 
 export const astroFoucKiller = defineIntegration({
   name: "astro-fouc-killer",
-  optionsSchema: z.object({
-    localStorageKey: z.string().optional(),
-  }),
+  optionsSchema: z
+    .object({
+      localStorageKey: z.string(),
+    })
+    .optional(),
   setup({ options }) {
     const localStorageKey = options?.localStorageKey ?? "themeToggle";
 
