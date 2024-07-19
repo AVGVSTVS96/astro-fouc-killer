@@ -3,15 +3,15 @@ import { createResolver } from "astro-integration-kit";
 import { hmrIntegration } from "astro-integration-kit/dev";
 import { defineConfig } from "astro/config";
 
-const { default: packageName } = await import("package-name");
+import astroFoucKiller from "../package/dist/index.js";
 
 // https://astro.build/config
 export default defineConfig({
-	integrations: [
-		tailwind(),
-		packageName(),
-		hmrIntegration({
-			directory: createResolver(import.meta.url).resolve("../package/dist"),
-		}),
-	],
+  integrations: [
+    tailwind(),
+    astroFoucKiller(),
+    hmrIntegration({
+      directory: createResolver(import.meta.url).resolve("../package/dist"),
+    }),
+  ],
 });
