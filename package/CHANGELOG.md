@@ -1,5 +1,11 @@
 # astro-fouc-killer
 
+## 0.1.2
+
+### Patch Changes
+
+- 917c437: Add repo field to `package.json`
+
 ## 0.1.1
 
 ### Patch Changes
