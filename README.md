@@ -1,4 +1,4 @@
-# package-name
+# astro-fouc-killer
 
 TODO:description
 
