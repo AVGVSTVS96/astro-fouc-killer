@@ -3,10 +3,12 @@ import { z } from "astro/zod";
 
 export const astroFoucKiller = defineIntegration({
   name: "astro-fouc-killer",
-  optionsSchema: z.object({
-    localStorageKey: z.string().default("themeToggle"),
-  }),
-  setup({ name, options }) {
+  optionsSchema: z
+    .object({
+      localStorageKey: z.string(),
+    })
+    .optional(),
+  setup({ name, options = {} }) {
     return {
       hooks: {
         "astro:config:setup": (params) => {
@@ -16,7 +18,9 @@ export const astroFoucKiller = defineIntegration({
             name,
             imports: {
               "virtual:astro-fouc-killer/config": `
-                export const localStorageKey = '${options.localStorageKey}';
+                export const localStorageKey = ${JSON.stringify(
+                  options?.localStorageKey ?? "themeToggle"
+                )};
               `,
               "virtual:astro-fouc-killer/script": `
                 import { localStorageKey } from 'virtual:astro-fouc-killer/config';
