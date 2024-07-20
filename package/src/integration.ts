@@ -1,4 +1,4 @@
-import { defineIntegration, addVirtualImports, createResolver } from "astro-integration-kit";
+import { defineIntegration, createResolver, addVirtualImports } from "astro-integration-kit";
 import { z } from "astro/zod";
 
 export const astroFoucKiller = defineIntegration({
@@ -13,23 +13,30 @@ export const astroFoucKiller = defineIntegration({
       hooks: {
         "astro:config:setup": (params) => {
           const { injectScript } = params;
-          const { resolve } = createResolver(import.meta.url);
+          const { resolve } = createResolver(import.meta.url)
+          const localStorageKey = options?.localStorageKey ?? "themeToggle";
 
           addVirtualImports(params, {
             name,
             imports: {
               "virtual:astro-fouc-killer/config": `
                 export const localStorageKey = ${JSON.stringify(
-                  options?.localStorageKey ?? "themeToggle"
+                  localStorageKey
                 )};
               `,
             },
           });
 
           injectScript(
-            "page",
-            `import "${resolve("./foucKillerScript")}";`
+            "head-inline",
+            `(function() {
+              var key = '${localStorageKey}';
+              var preferredTheme = localStorage.getItem(key) || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+              document.documentElement.classList.toggle('dark', preferredTheme === 'dark');
+            })();`
           );
+
+          injectScript("page", `import "${resolve("./foucKillerScript")}";`);
         },
       },
     };
