@@ -1,6 +1,6 @@
 {
   "name": "astro-fouc-killer",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "Eliminate Dark Mode FOUC (Flash Of Unstyled Content) in Astro. Works with class based dark modes set in local storage and supports system preference.",
   "author": {
     "email": "bassim@shahidy.com",

@@ -1,5 +1,11 @@
 # astro-fouc-killer
 
+## 0.3.0
+
+### Minor Changes
+
+- da40de0: First working version, using static local storage key
+
 ## 0.2.0
 
 ### Minor Changes
