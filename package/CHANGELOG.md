@@ -1,5 +1,11 @@
 # astro-fouc-killer
 
+## 0.2.0
+
+### Minor Changes
+
+- 5614e9c: fix(options-error): Define default `localStorageKey` directly in virtual module
+
 ## 0.1.2
 
 ### Patch Changes
