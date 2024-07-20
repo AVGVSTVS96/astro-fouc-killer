@@ -1,3 +1,6 @@
+>[!WARNING]
+This package is still in development and may not work as expected.
+
 # `astro-fouc-killer`
 
 This is an [Astro integration](https://docs.astro.build/en/guides/integrations-guide/) that sets the dark mode class on the root element of the page based on the local storage value or system preference, if no value is set in local storage.
