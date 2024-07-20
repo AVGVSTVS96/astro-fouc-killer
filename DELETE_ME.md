@@ -1,15 +1,15 @@
 ## Checklist
 
 - [x] Update all `TODO:`
-- [ ] Update all `package-name` occurences
-- [ ] Add a LICENSE.md at the root
-- [ ] Have gh cli installed
-- [ ] Work on the integration logic
+- [x] Update all `package-name` occurences
+- [x] Add a LICENSE.md at the root
+- [x] Have gh cli installed
+- [x] Work on the integration logic
 - [ ] Work on docs
   - [ ] JSDoc
-  - [ ] Package README
+  - [x] Package README
 - [ ] Format/lint (`pnpm lint:fix`)
-- [ ] Setup GitHub repository
+- [x] Setup GitHub repository
 - [ ] Release (see below)
 - [ ] Share!
 

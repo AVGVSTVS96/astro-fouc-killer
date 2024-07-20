@@ -3,7 +3,7 @@ import { createResolver } from "astro-integration-kit";
 import { hmrIntegration } from "astro-integration-kit/dev";
 import { defineConfig } from "astro/config";
 
-import astroFoucKiller from "../package/dist/index.js";
+import astroFoucKiller from "astro-fouc-killer";
 
 // https://astro.build/config
 export default defineConfig({
