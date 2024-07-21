@@ -1,5 +1,11 @@
 # astro-fouc-killer
 
+## 0.4.0
+
+### Minor Changes
+
+- 285c4f9: Full functionality achieved
+
 ## 0.3.0
 
 ### Minor Changes
