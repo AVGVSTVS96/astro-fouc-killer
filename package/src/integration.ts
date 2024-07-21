@@ -1,30 +1,42 @@
-import { defineIntegration } from "astro-integration-kit";
+import { defineIntegration, createResolver, addVirtualImports } from "astro-integration-kit";
+import { z } from "astro/zod";
 
 export const astroFoucKiller = defineIntegration({
   name: "astro-fouc-killer",
-  setup() {
+  optionsSchema: z
+    .object({
+      localStorageKey: z.string(),
+    })
+    .optional(),
+  setup({ name, options }) {
     return {
       hooks: {
         "astro:config:setup": (params) => {
           const { injectScript } = params;
+          const { resolve } = createResolver(import.meta.url)
+          const localStorageKey = options?.localStorageKey ?? "themeToggle";
+
+          addVirtualImports(params, {
+            name,
+            imports: {
+              "virtual:astro-fouc-killer/config": `
+                export const localStorageKey = ${JSON.stringify(
+                  localStorageKey
+                )};
+              `,
+            },
+          });
 
           injectScript(
             "head-inline",
-            `const preferredTheme =
-              localStorage.getItem("themeToggle") ||
-              (window.matchMedia('(prefers-color-scheme: dark)').matches
-                ? 'dark'
-                : 'light');
-              document.documentElement.classList.toggle(
-                'dark',
-                preferredTheme === 'dark'
-              );
-              window.addEventListener('storage', () => {
-                const isDark = localStorage.getItem("themeToggle") === 'dark';
-                document.documentElement.classList.toggle('dark', isDark);
-              });
-            `
+            `(function() {
+              var key = '${localStorageKey}';
+              var preferredTheme = localStorage.getItem(key) || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+              document.documentElement.classList.toggle('dark', preferredTheme === 'dark');
+            })();`
           );
+
+          injectScript("page", `import "${resolve("./foucKillerScript")}";`);
         },
       },
     };

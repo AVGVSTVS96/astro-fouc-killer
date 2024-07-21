@@ -13,7 +13,7 @@ export default defineConfig((options) => {
 		clean: true,
 		splitting: false,
 		minify: !dev,
-		external: [...Object.keys(peerDependencies)],
+		external: ['virtual:astro-fouc-killer/config', ...Object.keys(peerDependencies)],
 		tsconfig: "tsconfig.json",
 	};
 });
