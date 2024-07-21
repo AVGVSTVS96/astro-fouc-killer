@@ -13,7 +13,8 @@
   "schedule": ["before 4am on sunday"],
   "transitiveRemediation": true,
   "lockFileMaintenance": {
-    "enabled": true
+    "enabled": true,
+    "schedule": ["before 4am on monday"]
   },
   "postUpdateOptions": ["pnpmDedupe"],
   "packageRules": [
@@ -24,16 +25,16 @@
     },
     {
       "groupName": "package peer dependencies",
-	  "matchDepTypes": ["peerDependencies"],
+      "matchDepTypes": ["peerDependencies"],
       "matchFileNames": ["package/package.json"],
       "rangeStrategy": "auto"
     },
-	{
-		"groupName": "package dependencies",
-		"matchDepTypes": ["dependencies", "devDependencies"],
-		"matchFileNames": ["package/package.json"],
-		"rangeStrategy": "bump"
-	},
+    {
+      "groupName": "package dependencies",
+      "matchDepTypes": ["dependencies", "devDependencies"],
+      "matchFileNames": ["package/package.json"],
+      "rangeStrategy": "bump"
+    },
     {
       "groupName": "playground dependencies",
       "matchFileNames": ["playground/package.json"],
