@@ -23,10 +23,17 @@
       "rangeStrategy": "bump"
     },
     {
-      "groupName": "package dependencies",
+      "groupName": "package peer dependencies",
+	  "matchDepTypes": ["peerDependencies"],
       "matchFileNames": ["package/package.json"],
-      "rangeStrategy": "bump"
+      "rangeStrategy": "auto"
     },
+	{
+		"groupName": "package dependencies",
+		"matchDepTypes": ["dependencies", "devDependencies"],
+		"matchFileNames": ["package/package.json"],
+		"rangeStrategy": "bump"
+	},
     {
       "groupName": "playground dependencies",
       "matchFileNames": ["playground/package.json"],
