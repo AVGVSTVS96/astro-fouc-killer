@@ -1,19 +1,37 @@
 {
-	"$schema": "https://docs.renovatebot.com/renovate-schema.json",
-	"extends": ["config:recommended"],
-	"dependencyDashboard": true,
-	"lockFileMaintenance": {
-		"enabled": true
-	},
-	"postUpdateOptions": ["pnpmDedupe"],
-	"packageRules": [
-		{
-			"groupName": "all dependencies",
-			"groupSlug": "all",
-			"matchPackagePatterns": ["*"],
-			"schedule": ["before 4am on Monday"],
-			"rangeStrategy": "bump"
-		}
-	],
-	"ignoreDeps": ["node"]
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": [
+    "config:recommended",
+    ":semanticCommitType(chore)",
+    ":rebaseStalePrs"
+  ],
+  "dependencyDashboard": true,
+  "commitBodyTable": true,
+  "commitMessageTopic": "{{depName}}",
+  "labels": ["dependencies"],
+  "timezone": "America/New_York",
+  "schedule": ["before 4am on sunday"],
+  "transitiveRemediation": true,
+  "lockFileMaintenance": {
+    "enabled": true
+  },
+  "postUpdateOptions": ["pnpmDedupe"],
+  "packageRules": [
+    {
+      "groupName": "root dependencies",
+      "matchFileNames": ["package.json"],
+      "rangeStrategy": "bump"
+    },
+    {
+      "groupName": "package dependencies",
+      "matchFileNames": ["package/package.json"],
+      "rangeStrategy": "bump"
+    },
+    {
+      "groupName": "playground dependencies",
+      "matchFileNames": ["playground/package.json"],
+      "rangeStrategy": "bump"
+    }
+  ],
+  "ignoreDeps": ["node"]
 }
