@@ -9,16 +9,16 @@ export const astroFoucKiller = defineIntegration({
   name: "astro-fouc-killer",
   optionsSchema: z
     .object({
-      localStorageKey: z.string(),
+      localStorageKey: z.string().default("themeToggle"),
     })
-    .optional(),
+    .default({}),
   setup({ name, options }) {
     return {
       hooks: {
         "astro:config:setup": (params) => {
           const { injectScript, logger } = params;
           const { resolve } = createResolver(import.meta.url);
-          const localStorageKey = options?.localStorageKey ?? "themeToggle";
+          const localStorageKey = options.localStorageKey;
 
           addVirtualImports(params, {
             name,
@@ -34,15 +34,17 @@ export const astroFoucKiller = defineIntegration({
           injectScript(
             "head-inline",
             `(function() {
-              var key = '${localStorageKey}';
+              var key = ${JSON.stringify(localStorageKey)};
               var preferredTheme = localStorage.getItem(key) || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
               document.documentElement.classList.toggle('dark', preferredTheme === 'dark');
             })();`
           );
-          logger.info("Astro Fouc Killer: Injected inline script");
 
           injectScript("page", `import "${resolve("./foucKillerScript")}";`);
-          logger.info("Astro Fouc Killer: Injected page script");
+
+          logger.info(
+            "Astro Fouc Killer: Successfully injected fouc killer scripts"
+          );
         },
       },
     };
