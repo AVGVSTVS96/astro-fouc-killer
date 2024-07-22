@@ -43,7 +43,7 @@ export const astroFoucKiller = defineIntegration({
           injectScript("page", `import "${resolve("./foucKillerScript")}";`);
 
           logger.info(
-            "Astro Fouc Killer: Successfully injected fouc killer scripts"
+            "Successfully injected fouc killer scripts"
           );
         },
       },
