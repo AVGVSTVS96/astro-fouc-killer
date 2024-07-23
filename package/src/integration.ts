@@ -10,6 +10,7 @@ export const astroFoucKiller = defineIntegration({
   optionsSchema: z
     .object({
       localStorageKey: z.string().default("themeToggle"),
+      includeStorageListener: z.boolean().default(false),
     })
     .default({}),
   setup({ name, options }) {
@@ -18,15 +19,13 @@ export const astroFoucKiller = defineIntegration({
         "astro:config:setup": (params) => {
           const { injectScript, logger } = params;
           const { resolve } = createResolver(import.meta.url);
-          const localStorageKey = options.localStorageKey;
+          const { localStorageKey, includeStorageListener } = options;
 
           addVirtualImports(params, {
             name,
             imports: {
               "virtual:astro-fouc-killer/config": `
-                export const localStorageKey = ${JSON.stringify(
-                  localStorageKey
-                )};
+                export const localStorageKey = ${JSON.stringify(localStorageKey)};
               `,
             },
           });
@@ -39,12 +38,12 @@ export const astroFoucKiller = defineIntegration({
               document.documentElement.classList.toggle('dark', preferredTheme === 'dark');
             })();`
           );
+          logger.info("Injected fouc killer script");
 
-          injectScript("page", `import "${resolve("./foucKillerScript")}";`);
-
-          logger.info(
-            "Successfully injected fouc killer scripts"
-          );
+          if (includeStorageListener) {
+            injectScript("page", `import "${resolve("./storageListener")}";`);
+            logger.info("Injected local storage listener");
+          }
         },
       },
     };
