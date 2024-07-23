@@ -4,7 +4,7 @@
 
 ### Minor Changes
 
-- 285c4f9: Full functionality achieved
+- [dd50c46](https://github.com/AVGVSTVS96/astro-fouc-killer/commit/dd50c4652a58d4ed5751d76cfbd1b5cd9334fb4c): Full functionality achieved, user can define custom local storage key
 
 ## 0.3.0
 
