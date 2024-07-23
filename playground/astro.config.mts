@@ -9,7 +9,10 @@ import astroFoucKiller from "astro-fouc-killer";
 export default defineConfig({
   integrations: [
     tailwind(),
-    astroFoucKiller({ localStorageKey: "theme-test" }),
+    astroFoucKiller({
+      localStorageKey: "theme-test",
+      includeStorageListener: true,
+    }),
     hmrIntegration({
       directory: createResolver(import.meta.url).resolve("../package/dist"),
     }),
