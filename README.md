@@ -1,6 +1,6 @@
 # astro-fouc-killer
 
-This is an [Astro integration](https://docs.astro.build/en/guides/integrations-guide/) that sets the dark mode class on the root element of the page based on the local storage value or system preference, if no value is set in local storage.
+This is an [Astro integration](https://docs.astro.build/en/guides/integrations-guide/) that eliminates FOUC (Flash Of Unstyled Content) by injecting an inline script that sets the `'dark'` class on the document element before the page is rendered. The script gets the local storage value or, if one isn't provided, uses system preference to determine the theme.
 
 This package is structured as a monorepo:
 
