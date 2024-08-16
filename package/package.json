@@ -5,17 +5,15 @@
   "author": {
     "email": "bassim@shahidy.com",
     "name": "Bassim Shahidy",
-    "url": "https://bassimshahidy.com"
+    "url": "https://bassim.build"
   },
   "license": "AGPL-3.0-only",
-  "keywords": [
-    "astro-integration",
-    "astro-component",
-    "withastro",
-    "astro"
-  ],
-  "homepage": "https://github.com/avgvstvs96/astro-fouc-killer",
-  "repository": "https://github.com/AVGVSTVS96/astro-fouc-killer",
+  "keywords": ["astro-integration", "astro-component", "withastro", "astro"],
+  "repository": {
+    "type": "git",
+    "url": "git+https://gthub.com/AVGVSTVS96/astro-fouc-killer.git",
+    "directory": "package"
+  },
   "publishConfig": {
     "access": "public"
   },
@@ -26,9 +24,7 @@
       "default": "./dist/index.js"
     }
   },
-  "files": [
-    "dist"
-  ],
+  "files": ["dist"],
   "scripts": {
     "dev": "tsup --watch",
     "build": "tsup"
