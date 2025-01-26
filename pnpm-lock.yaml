@@ -18,7 +18,7 @@ importers:
   package:
     dependencies:
       astro:
-        specifier: ^4.11.5
+        specifier: ^4.11.5 || ^5.0.0
         version: 4.11.5(@types/node@20.14.10)(typescript@5.5.3)
       astro-integration-kit:
         specifier: ^0.14.0
@@ -36,12 +36,12 @@ importers:
       astro:
         specifier: ^4.11.5
         version: 4.11.5(@types/node@20.14.10)(typescript@5.5.3)
-      astro-integration-kit:
-        specifier: ^0.14.0
-        version: 0.14.0(astro@4.11.5(@types/node@20.14.10)(typescript@5.5.3))
       astro-fouc-killer:
         specifier: workspace:*
         version: link:../package
+      astro-integration-kit:
+        specifier: ^0.14.0
+        version: 0.14.0(astro@4.11.5(@types/node@20.14.10)(typescript@5.5.3))
       tailwindcss:
         specifier: ^3.4.4
         version: 3.4.4
