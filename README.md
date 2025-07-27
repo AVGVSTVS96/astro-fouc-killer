@@ -13,4 +13,4 @@ To see how to get started, check out the [package README](./package/README.md)
 
 ## Licensing
 
-[AGPL-3.0 Licensed](./LICENSE). Made with ❤️ by [Bassim [AVGVSTVS96]](https://github.com/avgvstvs96).
+[MIT Licensed](./LICENSE). Made with ❤️ by [Bassim [AVGVSTVS96]](https://github.com/avgvstvs96).
