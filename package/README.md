@@ -10,11 +10,14 @@ This integration has two parts, the FOUC (Flash Of Unstyled Content) killer scri
 
 - The second part is the local storage listener, this script listens for changes to the local storage value and updates the class on the root element of the page accordingly. This is optional, but can serve as a part of your dark mode implementation. See [configuration options](#configuration) below.
 
+>[!NOTE]
+This integration injects the fouc-killer script into the `<head>` of every page in your Astro site. This may not be desirable if your dark mode implementation or styling doesn't apply to your entire site.
+
 ## Usage
 
 ### Prerequisites
 >[!IMPORTANT]
-Only works with class based dark mode. 
+This integration is for class based dark modes. When using TailwindCSS, ensure `darkMode: 'selector'` is set in your tailwind config (the `'selector'` strategy replaced the `'class'` strategy in TailwindCSS [v3.4.1](https://tailwindcss.com/docs/dark-mode#toggling-dark-mode-manually)).
 
 
 ### Installation
@@ -22,53 +25,35 @@ Only works with class based dark mode.
 Install the integration **automatically** using the Astro CLI:
 
 ```bash
-pnpm astro add astro-fouc-killer
+[pnpm|yarn|bun|npm] astro add astro-fouc-killer
 ```
 
-```bash
-npx astro add astro-fouc-killer
-```
+<details>
+<summary>Or install it <strong>manually</strong></summary>
+  
+  1. Install the integration from NPM
+  
+  ```bash
+  [pnpm|yarn|bun|npm] [add|install] astro-fouc-killer
+  ```
+  
+  
+  
+  2. Add the integration to your astro config
+  
+  ```diff language=javascript
+  import { defineConfig } from 'astro/config';
+  +import astroFoucKiller from "astro-fouc-killer";
+  
+  export default defineConfig({
+    integrations: [
+  +    astroFoucKiller(),
+    ],
+  });
+  ```
+</details>
 
-```bash
-yarn astro add astro-fouc-killer
-```
-
-```bash
-bun astro add astro-fouc-killer
-```
-
-Or install it **manually**:
-
-1. Install the required dependencies
-
-```bash
-pnpm add astro-fouc-killer
-```
-
-```bash
-npm install astro-fouc-killer
-```
-
-```bash
-yarn add astro-fouc-killer
-```
-
-```bash
-bun add astro-fouc-killer
-```
-
-2. Add the integration to your astro config
-
-```diff
-import { defineConfig } from 'astro/config';
-+import astroFoucKiller from "astro-fouc-killer";
-
-export default defineConfig({
-  integrations: [
-+    astroFoucKiller(),
-  ],
-});
-```
+---
 
 ### Configuration
 
